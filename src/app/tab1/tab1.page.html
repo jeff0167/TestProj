@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="success">
     <ion-title>
       Tab 1
     </ion-title>
@@ -13,5 +13,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-input color="danger"[(ngModel)]="singleComment.comment" (keydown.enter)="createComment()"></ion-input> <!--when enter also call func-->
+  <ion-button color="warning" type="button" (click)="createComment()">Create comment</ion-button>
+
+  <h1>{{comments.length}}</h1>
+
+  <ion-list>
+    <ion-item *ngFor="let Acomment of comments">
+      {{Acomment.comment}} {{Acomment.rating}}
+    </ion-item>
+  </ion-list>
+
+
 </ion-content>

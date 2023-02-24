@@ -13,5 +13,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <h1>{{comments.length}}</h1>
+  <!-- <img src="assets/images/StoneCave.png" style="width:1400px;height:600px;">  -->
+  <ion-list>
+    <ion-item *ngFor="let Acomment of comments let i = index">
+      {{Acomment.comment}} {{Acomment.rating}} <ion-button color="warning" type="button" (click)="addLike(i)">Like comment</ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>

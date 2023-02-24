@@ -13,17 +13,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-grid>
-    <ion-row>
-    <ion-col size="6" *ngFor="let photo of photoService.photos; index as position">
-      <ion-img [src]="photo.webviewPath" (click)="showActionSheet(photo, position)"></ion-img>
-    </ion-col>
-    </ion-row>
-  </ion-grid>
+  <h1>{{comments.length}}</h1>
+  <!-- <img src="assets/images/StoneCave.png" style="width:1400px;height:600px;">  -->
+  <ion-list>
+    <ion-item *ngFor="let Acomment of comments let i = index">
+      {{Acomment.comment}} {{Acomment.rating}} 
+      <ion-button color="warning" type="button" (click)="editComment(i)">Edit comment</ion-button>
+      <ion-button color="danger" type="button" (click)="deleteComment(i)">Delete comment</ion-button>
+    </ion-item>
+  </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="photoService.addNewToGallery()">
-      <ion-icon name="camera"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ActionSheetController } from '@ionic/angular';
-import { UserPhoto, PhotoService } from '../services/photo.service';
+
+import { GlobalData } from '../globalData.service';
 
 @Component({
   selector: 'app-tab2',
@@ -9,31 +9,28 @@ import { UserPhoto, PhotoService } from '../services/photo.service';
 })
 export class Tab2Page {
 
-  constructor(public photoService: PhotoService, public actionSheetController: ActionSheetController) {}
+  comments: {comment: string, rating: number}[];
+
+  constructor(private globalData: GlobalData) {
+    this.comments = globalData.comments;
+  }
 
   async ngOnInit() {
-    await this.photoService.loadSaved();
+    
   }
 
-  public async showActionSheet(photo: UserPhoto, position: number) {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Photos',
-      buttons: [{
-        text: 'Delete',
-        role: 'destructive',
-        icon: 'trash',
-        handler: () => {
-          this.photoService.deletePicture(photo, position);
-        }
-      }, {
-        text: 'Cancel',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          // Nothing to do, action sheet is automatically closed
-         }
-      }]
-    });
-    await actionSheet.present();
+  editComment(index: number){
+    // when you click the button a text field window shows up where you can change the existing comment, click a button then it changes the comment or X for cancel
   }
+
+  deleteComment(index: number){
+    this.globalData.RemoveComment(index);
+    this.comments = this.globalData.comments; 
+  }
+
 }
+
+// I have three tabs, i want to share data between them
+// i write a comment in tab one click create and then that comment lives
+// in tab 2 i can see all the comments created and edit or delete them
+// in tab 3 you can like comments
