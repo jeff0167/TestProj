@@ -24,5 +24,10 @@
     </ion-item>
   </ion-list>
 
+    <ion-card-content *ngFor="let table of globalData.tables let i = index">
+      <ion-card-content (click)="ReserveTable(i)" [ngStyle]="{'background-color': GetTableColor(i) }" [id]="'table' + (i)" class="table"></ion-card-content>
+    </ion-card-content>
+
+  <ion-button (click)="AddReservation()">Make reservation</ion-button>
 
 </ion-content>

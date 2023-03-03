@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Color } from '@ionic/core';
 import { GlobalData } from '../globalData.service';
 
 @Component({
@@ -14,7 +15,27 @@ export class Tab1Page {
 
   @Output() reviewSubmitted = new EventEmitter<string>();
 
-  constructor(private globalData: GlobalData) {
+  //tableColor: Color = "#22fcc9";
+  // if the tables is reserved display it as red
+
+  GetTableColor(id: number){ // would need table id
+    if(this.globalData.tables[id].isReserved){
+      return "#ec7288"
+    }
+    return "#78bef4";
+  }
+
+  tablesChosen: number[] = [];
+
+  ReserveTable(id: number){
+    this.tablesChosen.push(id); // would really just want it to change color on click, then click again to unselect it
+  }
+  
+  AddReservation(){
+    this.globalData.AddReservationsId(this.tablesChosen)
+  }
+
+  constructor(public globalData: GlobalData) {
     this.comments = globalData.comments;
     this.singleComment = {comment: "", rating: 0};
   }

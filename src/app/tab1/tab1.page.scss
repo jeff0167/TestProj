@@ -1,3 +1,67 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+.table{
+  height: 50px;
+  width: 50px;
+ // background-color: #78bef4;
+  border-radius: 50%;
+  transition: scale 140ms ease;
+ // display: inline-block;
+}
+
+// .table:hover{
+//   //scale: 1.9;
+//   //background-color: #fc22f5; // can't asign it's hover color, cause it's asigned by the typescript by the reserved boolean
+// }
+
+// #table0:hover{
+//   scale: 1.49;
+//   //position: relative;
+//   // transform: translate(580%,-20%);
+//   //background-color: #fc22f5;
+// }
+
+// #table1:hover{
+//   scale: 1.49;
+// }
+// #table2:hover{
+//   scale: 1.49;
+// }
+// #table3:hover{
+//   scale: 1.49;
+// }
+// #table4:hover{
+//   scale: 1.49;
+// }
+
+#table0{
+  scale: 1.5;
+  //position: relative;
+  transform: translate(580%,-20%); // they seem to  overlap sometimes so that they aren't cliclable
+}
+
+#table1{
+  scale: 1.5;
+  //position: relative;
+  transform: translate(780%,80%);
+}
+
+#table2{
+  scale: 1.5;
+  //position: relative;
+  transform: translate(1100%,300%);
+}
+
+#table3{
+  scale: 1.5;
+  //position: relative;
+  transform: translate(1500%,-200%);
+}
+
+#table4{
+  scale: 1.5;
+  //position: relative;
+  transform: translate(1100%,-200%);
+}
